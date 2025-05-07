@@ -18,14 +18,14 @@ void UserRM::SetCity() { this->user->city = "Lviv\n"; }
 void UserAF::SetName() { this->user->firstName = "Anastasiia "; }
 void UserAF::SetLastName() { this->user->lastName = "Fradkova"; }
 void UserAF::SetAge() { this->user->age = "18"; }
-void UserAF:: SetPhone() { this->user->phone = "+380661484985"; }
+void UserAF::SetPhone() { this->user->phone = "+380661484985"; }
 void UserAF::SetEmail() { this->user->email = "Anastasiia.Fradkova@lnu.edu.ua"; }
 void UserAF::SetCity() { this->user->city = "Lviv\n"; }
 
 void UserLP::SetName() { this->user->firstName = "Pavlo "; }
 void UserLP::SetLastName() { this->user->lastName = "Levush"; }
 void UserLP::SetAge() { this->user->age = "??"; }
-void UserLP:: SetPhone() { this->user->phone = "+380950780400"; }
+void UserLP::SetPhone() { this->user->phone = "+380950780400"; }
 void UserLP::SetEmail() { this->user->email = "Pavlo.Levush@lnu.edu.ua"; }
 void UserLP::SetCity() { this->user->city = "Lviv\n"; }
 
