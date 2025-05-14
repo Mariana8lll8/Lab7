@@ -4,91 +4,52 @@ using namespace std;
 
 int main()
 {
-    UserRM *rm = new UserRM();
-    UserAF *af = new UserAF();
-    UserLP *lp = new UserLP();
-    UserRegistration *ur = new UserRegistration();
+    Peperoni *p = new Peperoni();
+    Hawaiian *h = new Hawaiian();
+    BBQChicken *b = new BBQChicken();
+    BuyPizza *buy = new BuyPizza();
     int choice;
     char cont;
 
-    bool registeredRM = false;
-    bool registeredAF = false;
-    bool registeredLP = false;
-
     do
     {
-        if (registeredRM && registeredAF && registeredLP)
-        {
-            cout << "\nAll users are already registered!\n";
-            break;
-        }
-
-        cout << "\n1. Mariana Roman \n2. Anastasiia Fradkova\n3. Pavlo Levush\n\n";
-        cout << "Select user to register: ";
+        cout << "\nЯку піцу бажаєте замовити? \n\n1. Пепероні\n2. Гавайська\n3. BBQ з куркою\n\n";
+        cout << "Ваш вибір: ";
         cin >> choice;
 
         if (choice == 1)
         {
-            if (registeredRM)
-            {
-                cout << "\nUser  Mariana Roman is already registered.\n\n";
-            }
-            else
-            {
-                ur->SetUserBuilder(rm);
-                ur->ConstructUser();
-                User *user = ur->GetUser();
-                cout << user->ToString();
-                registeredRM = true;
-            }
+            buy->SetPizzaBuilder(p);
+            buy->ConstructPizza();
+            Pizza *pizza = buy->GetPizza();
+            cout << pizza->ToString();
         }
         else if (choice == 2)
         {
-            if (registeredAF)
-            {
-                cout << "\nUser Anastasiia Fradkova is already registered.\n\n";
-            }
-            else
-            {
-                ur->SetUserBuilder(af);
-                ur->ConstructUser();
-                User *user = ur->GetUser();
-                cout << user->ToString();
-                registeredAF = true;
-            }
+            buy->SetPizzaBuilder(h);
+            buy->ConstructPizza();
+            Pizza *pizza = buy->GetPizza();
+            cout << pizza->ToString();
         }
         else if (choice == 3)
         {
-            if (registeredLP)
-            {
-                cout << "\nUser Pavlo Levush is already registered.\n\n";
-            }
-            else
-            {
-                ur->SetUserBuilder(lp);
-                ur->ConstructUser();
-                User *user = ur->GetUser();
-                cout << user->ToString();
-                registeredLP = true;
-            }
+            buy->SetPizzaBuilder(b);
+            buy->ConstructPizza();
+            Pizza *pizza = buy->GetPizza();
+            cout << pizza->ToString();
         }
         else
         {
-            cout << "\nInvalid choice!\n";
+            cout << "\nНеправильний ввід!\n";
             break;
         }
 
-        if (registeredRM && registeredAF && registeredLP)
-        {
-            cout << "\nAll users are already registered!\n";
-            break;
-        }
-
-        cout << "Do you want to continue? (y/n): ";
+        cout << "Хочете продовжити? (y/n): ";
         cin >> cont;
+    }
+    while (cont == 'y' || cont == 'Y')
+        ;
 
-    } while (cont == 'y' || cont == 'Y');
-
-    cout << "\nProgram completed!\n\n";
+    cout << "\nПрограма завершена!\n\n";
     return 0;
 }
