@@ -2,43 +2,49 @@
 #include "Builder.h"
 using namespace std;
 
-string User::ToString() { return string("\nUser: " + firstName + lastName + "\n" + "Age: " + age + "\n" + "Phone: " + phone + "\n" + "Email: " + email + "\n" + "City: " + city + "\n" + "--- User registered! ---\n\n"); }
+string Pizza::ToString() { return string("\n--- PIZZA ---\nDough: " + dough + "\nSauce: " + sauce + "\nCheese: " + cheese + "\nToppings: " + toppings + "\nSpices: " + spices + "\nSize: " + size + "\n\n"); }
 
-void UserBuilder::CreateNewUser() { user = new User(); }
-User* UserBuilder:: GetThisUser() { return user; }
-UserBuilder::~UserBuilder() { delete user; }
+void PizzaBuilder::CreateNewPizza() { pizza = new Pizza(); }
+Pizza* PizzaBuilder::GetThisPizza() { return pizza; }
+PizzaBuilder::~PizzaBuilder() { delete pizza; }
 
-void UserRM::SetName() { this->user->firstName = "Mariana "; }
-void UserRM::SetLastName() { this->user->lastName = "Roman"; }
-void UserRM::SetAge() { this->user->age = "18"; }
-void UserRM::SetPhone() { this->user->phone = "+380632584884";}
-void UserRM::SetEmail() { this->user->email = "Mariana.Roman@lnu.edu.ua"; }
-void UserRM::SetCity() { this->user->city = "Lviv\n"; }
+void Pizza::SetDough(string d) { dough = d; }
+void Pizza::SetSauce(string s) { sauce = s; }
+void Pizza::SetCheese(string c) { cheese = c; }
+void Pizza::SetToppings(string t) { toppings = t; }
+void Pizza::SetSpices(string sp) { spices = sp; }
+void Pizza::SetSize(string sz) { size = sz; }
 
-void UserAF::SetName() { this->user->firstName = "Anastasiia "; }
-void UserAF::SetLastName() { this->user->lastName = "Fradkova"; }
-void UserAF::SetAge() { this->user->age = "18"; }
-void UserAF::SetPhone() { this->user->phone = "+380661484985"; }
-void UserAF::SetEmail() { this->user->email = "Anastasiia.Fradkova@lnu.edu.ua"; }
-void UserAF::SetCity() { this->user->city = "Lviv\n"; }
+void Peperoni::SetDough() { pizza->SetDough("тонке тісто"); }
+void Peperoni::SetSauce() { pizza->SetSauce("томатний соус"); }
+void Peperoni::SetCheese() { pizza->SetCheese("моцарела"); }
+void Peperoni::SetToppings() { pizza->SetToppings("пепероні"); }
+void Peperoni::SetSpices() { pizza->SetSpices("орегано"); }
+void Peperoni::SetSize() { pizza->SetSize("велика"); }
 
-void UserLP::SetName() { this->user->firstName = "Pavlo "; }
-void UserLP::SetLastName() { this->user->lastName = "Levush"; }
-void UserLP::SetAge() { this->user->age = "??"; }
-void UserLP::SetPhone() { this->user->phone = "+380950780400"; }
-void UserLP::SetEmail() { this->user->email = "Pavlo.Levush@lnu.edu.ua"; }
-void UserLP::SetCity() { this->user->city = "Lviv\n"; }
+void Hawaiian::SetDough() { pizza->SetDough("пухке тісто"); }
+void Hawaiian::SetSauce() { pizza->SetSauce("солодкий соус"); }
+void Hawaiian::SetCheese() { pizza->SetCheese("чеддер"); }
+void Hawaiian::SetToppings() { pizza->SetToppings("ананас, шинка"); }
+void Hawaiian::SetSpices() { pizza->SetSpices("базилік"); }
+void Hawaiian::SetSize() { pizza->SetSize("середня"); }
 
-void UserRegistration::SetUserBuilder(UserBuilder* uBuilder) { _userBuilder = uBuilder; }
-User* UserRegistration::GetUser() { return _userBuilder->GetThisUser(); }
-void UserRegistration::ConstructUser() 
+void BBQChicken::SetDough() { pizza->SetDough("гриль тісто"); }
+void BBQChicken::SetSauce() { pizza->SetSauce("BBQ соус"); }
+void BBQChicken::SetCheese() { pizza->SetCheese("моцарела, пармезан"); }
+void BBQChicken::SetToppings() { pizza->SetToppings("курка, цибуля"); }
+void BBQChicken::SetSpices() { pizza->SetSpices("перець"); }
+void BBQChicken::SetSize() { pizza->SetSize("велика"); }
+
+void BuyPizza::SetPizzaBuilder(PizzaBuilder* pBuilder) { _pizzaBuilder = pBuilder; }
+Pizza* BuyPizza::GetPizza() { return _pizzaBuilder->GetThisPizza(); }
+void BuyPizza::ConstructPizza() 
 {
-    _userBuilder->CreateNewUser();
-    _userBuilder->SetName();
-    _userBuilder->SetLastName();
-    _userBuilder->SetAge();
-    _userBuilder->SetPhone();
-    _userBuilder->SetEmail();
-    _userBuilder->SetCity();
+    _pizzaBuilder->CreateNewPizza();
+    _pizzaBuilder->SetDough();
+    _pizzaBuilder->SetSauce();
+    _pizzaBuilder->SetCheese();
+    _pizzaBuilder->SetToppings();
+    _pizzaBuilder->SetSpices();
+    _pizzaBuilder->SetSize();
 }
-
