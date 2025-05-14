@@ -2,76 +2,79 @@
 #include <iostream>
 using namespace std;
 
-class User
+class Pizza
 {
+private:
+    string dough;
+    string sauce;
+    string cheese;
+    string toppings;
+    string spices;
+    string size;
 public:
-    string firstName;
-    string lastName;
-    string age;
-    string phone;
-    string email;
-    string city;
+    void SetDough(string d);
+    void SetSauce(string s);
+    void SetCheese(string c);
+    void SetToppings(string t);
+    void SetSpices(string sp);
+    void SetSize(string sz);
+
     string ToString();
 };
 
-class UserBuilder
+class PizzaBuilder
 {
 public:
-    void CreateNewUser();
-    User *GetThisUser();
-    ~UserBuilder();
+    void CreateNewPizza();
+    Pizza *GetThisPizza();
+    ~PizzaBuilder();
 
-    virtual void SetName() = 0;
-    virtual void SetLastName() = 0;
-    virtual void SetAge() = 0;
-    virtual void SetPhone() = 0;
-    virtual void SetEmail() = 0;
-    virtual void SetCity() = 0;
+    virtual void SetDough() = 0;
+    virtual void SetSauce() = 0;
+    virtual void SetCheese() = 0;
+    virtual void SetToppings() = 0;
+    virtual void SetSpices() = 0;
+    virtual void SetSize() = 0;
 
 protected:
-    User *user;
+    Pizza *pizza;
 };
 
-class UserRM : public UserBuilder
-{
+class Peperoni : public PizzaBuilder {
 public:
-    virtual void SetName() override;
-    virtual void SetLastName() override;
-    virtual void SetAge() override;
-    virtual void SetPhone() override;
-    virtual void SetEmail() override;
-    virtual void SetCity() override;
+    void SetDough() override;
+    void SetSauce() override;
+    void SetCheese() override;
+    void SetToppings() override;
+    void SetSpices() override;
+    void SetSize() override;
 };
-
-class UserAF : public UserBuilder
-{
+class Hawaiian : public PizzaBuilder {
 public:
-    virtual void SetName() override;
-    virtual void SetLastName() override;
-    virtual void SetAge() override;
-    virtual void SetPhone() override;
-    virtual void SetEmail() override;
-    virtual void SetCity() override;
+    void SetDough() override;
+    void SetSauce() override;
+    void SetCheese() override;
+    void SetToppings() override;
+    void SetSpices() override;
+    void SetSize() override;
 };
-
-class UserLP : public UserBuilder
-{
+class BBQChicken : public PizzaBuilder {
 public:
-    virtual void SetName() override;
-    virtual void SetLastName() override;
-    virtual void SetAge() override;
-    virtual void SetPhone() override;
-    virtual void SetEmail() override;
-    virtual void SetCity() override;
+    void SetDough() override;
+    void SetSauce() override;
+    void SetCheese() override;
+    void SetToppings() override;
+    void SetSpices() override;
+    void SetSize() override;
 };
 
-class UserRegistration
+class BuyPizza
 {
 private:
-    UserBuilder *_userBuilder;
+    PizzaBuilder *_pizzaBuilder;
 
 public:
-    void SetUserBuilder(UserBuilder *uBuilder);
-    User *GetUser();
-    void ConstructUser();
+    void SetPizzaBuilder(PizzaBuilder *pBuilder);
+    Pizza *GetPizza();
+    void ConstructPizza();
 };
